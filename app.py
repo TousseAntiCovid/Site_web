@@ -16,6 +16,11 @@ db= SQLAlchemy(app)
 def index():
     return render_template('index.html')
 
+@app.route('/test', methods = ['GET','POST'])
+def pagetest():
+    return render_template('test.html')
+
+
 @app.route('/refresh', methods = ['POST'])
 def refresh():
     file = request.files['file']

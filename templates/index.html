@@ -15,14 +15,50 @@
             <br>
             <input type="submit" value="submit">
         </form>
-        
+
     </div>
- 
+    <div id="record">
+        <button id="start"> Start</button>
+        <button action="/refresh" id="stopp"> Stop </button>
+        <div id="ok"></div>
+    </div>
 </div>
 
-{% endblock %}
 
 
 <script>
+    start.onclick = () => {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+                mediaRecorder = new MediaRecorder(stream)
+                mediaRecorder.start()
+                chuck = []
 
+                mediaRecorder.addEventListener("dataavailable", e => {
+                    chuck.push(e.data)
+                })
+                mediaRecorder.addEventListener("stop", e => {
+                    blob = new Blob(chuck)
+                    audio_url = URL.createObjectURL(blob)
+                    audio = new Audio(audio_url)
+                    console.log("Le lien :")
+                    audio.setAttribute("controls", 1)
+                    ok.appendChild(audio)
+
+                    /*var a = document.createElement("a");
+                    document.body.appendChild(a);
+                    a.style = "display: none";
+                    a.href = audio_url;
+                    a.download = "sample.wav";
+                    a.click();
+                    window.URL.revokeObjectURL(audio_url);*/
+                })
+            })
+    }
+    stopp.onclick = () => {
+        mediaRecorder.stop()
+    }
 </script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+{% endblock %}
