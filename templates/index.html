@@ -1,64 +1,100 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enregistrement</title>
+</head>
 
-<title>Task Master</title>
-{% endblock %}
+<body>
+    <div id="app">
+        <p>Bonjour utilisateur [[ user ]] </p>
+        <div id="enregistrement">
+            <form action="/refresh" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept="audio/*">
+                <br>
+                <input type="submit" value="submit">
+            </form>
 
-{% block body %}
-
-<div class="content">
-    <h1>Enregistrement</h1>
-    <div id="enregistrement">
-        <form action="/refresh" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file" accept="audio/*">
-            <br>
-            <input type="submit" value="submit">
-        </form>
-
+        </div>
+        <div id="record">
+            <button v-on:click="startRecord" id="start"> Start</button>
+            <button v-on:click="stopRecord" id="stopp"> Stop </button>
+            <div id="ok"></div>
+        </div>
     </div>
-    <div id="record">
-        <button id="start"> Start</button>
-        <button action="/refresh" id="stopp"> Stop </button>
-        <div id="ok"></div>
-    </div>
-</div>
 
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
-<script>
-    start.onclick = () => {
-        navigator.mediaDevices.getUserMedia({ audio: true })
-            .then(stream => {
-                mediaRecorder = new MediaRecorder(stream)
-                mediaRecorder.start()
-                chuck = []
 
-                mediaRecorder.addEventListener("dataavailable", e => {
-                    chuck.push(e.data)
-                })
-                mediaRecorder.addEventListener("stop", e => {
-                    blob = new Blob(chuck)
-                    audio_url = URL.createObjectURL(blob)
-                    audio = new Audio(audio_url)
-                    console.log("Le lien :")
-                    audio.setAttribute("controls", 1)
-                    ok.appendChild(audio)
+        
+    <script>
+        var app = new Vue({
+            el: "#app",
+            delimiters: ['[[', ']]'],
+            data: {
+                user: "Anonyme",
+                audio_save: ""
+            },
+            methods: {
+                startRecord: async function (event) {
+                    navigator.mediaDevices.getUserMedia({ audio: true })
+                        .then(stream => {
+                            mediaRecorder = new MediaRecorder(stream)
+                            mediaRecorder.start()
+                            chuck = []
 
-                    /*var a = document.createElement("a");
-                    document.body.appendChild(a);
-                    a.style = "display: none";
-                    a.href = audio_url;
-                    a.download = "sample.wav";
-                    a.click();
-                    window.URL.revokeObjectURL(audio_url);*/
-                })
-            })
-    }
-    stopp.onclick = () => {
-        mediaRecorder.stop()
-    }
-</script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                            mediaRecorder.addEventListener("dataavailable", e => {
+                                chuck.push(e.data)
+                            })
+                            mediaRecorder.addEventListener("stop", e => {
+                                blob = new Blob(chuck)
+                                audio_url = URL.createObjectURL(blob)
+                                audio = new Audio(audio_url)
+                                audio.setAttribute("controls", 1)
+                                ok.appendChild(audio)
 
-{% endblock %}
+                                
+                                envoi = new FormData();
+                                envoi.append('audio',blob)
+                                this.audio_save = envoi
+
+                                console.log(envoi)
+                                console.log(this.audio_save)
+
+                                this.ajouterSons()
+
+                                /*var a = document.createElement("a");
+                                document.body.appendChild(a);
+                                a.style = "display: none";
+                                a.href = audio_url;
+                                a.download = "sample.wav";
+                                a.click();
+                                window.URL.revokeObjectURL(audio_url);*/
+                            })
+                        })
+                },
+                stopRecord: async function (event) {
+                    mediaRecorder.stop()
+                },
+                async ajouterSons(){
+                    
+                    console.log(this.audio_save)
+                    const res = await axios.post('/refresh2', this.audio_save , {
+                        headers: {'content-type': 'multipart/form-data'}
+                    })
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
