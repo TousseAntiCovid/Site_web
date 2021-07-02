@@ -44,6 +44,13 @@ def refresh2():
     
 
 
+@app.route('/refresh2', methods = ['POST'])
+def refresh2():
+    print(request.files)
+    return "ok"
+    
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
