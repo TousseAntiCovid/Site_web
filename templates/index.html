@@ -17,8 +17,10 @@
                 <br>
                 <input type="submit" value="submit">
             </form>
-
         </div>
+        <form action="/test" method="post">
+            <input type="submit" name="upvote" value="Upvote" />
+        </form>
         <div id="record">
             <button v-on:click="startRecord" id="start"> Start</button>
             <button v-on:click="stopRecord" id="stopp"> Stop </button>
