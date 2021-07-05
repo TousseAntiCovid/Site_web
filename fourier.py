@@ -13,6 +13,7 @@ import soundfile as sf
 from os.path import basename
 
 
+
 def plot_spectrogram(Y, sr, hop_length, y_axis="linear"):
     plt.figure(figsize=(25, 10))
     librosa.display.specshow(Y, sr=sr, hop_length=hop_length, x_axis="time", y_axis=y_axis)
@@ -21,7 +22,7 @@ def plot_spectrogram(Y, sr, hop_length, y_axis="linear"):
 
 def convert_to_fourier(cov_file):
     fileName, fileExtension = os.path.splitext(cov_file)
-    scale, sr = librosa.load(cov_file)
+    scale, sr = librosa.load('uploaded/wav_uploaded/en_cours/'+cov_file)
     fourier = fftpack.fft(scale)
     power = np.abs(fourier) 
     frequences = fftpack.fftfreq(scale.size)
@@ -37,9 +38,10 @@ def convert_to_fourier(cov_file):
     fileName1 = str(fileName1)
     
     for char in fileName1:
-        if char == "/":
+        if char == "_":
             fileName1 = fileName1.replace(char,'_')
             
     fileName1 = fileName1 + ".png"
-    plt.savefig(str(fileName1))
+    plt.savefig(str("uploaded/fourrier_uploaded/en_cours/"+fileName1))
+
 

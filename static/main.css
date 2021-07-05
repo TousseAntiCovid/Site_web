@@ -1,0 +1,111 @@
+
+.banniere{
+   background: url(img/homebg.png) no-repeat top center;
+   background-size: cover;
+   position: relative;
+   height: 59em;
+
+}
+
+.fixed-top {
+   background-color: rgba(255, 255, 255, 0);
+   transition: background-color 2s ease 0s;
+   color: white;
+   padding-left: 5%;
+   padding-right: 5%;
+ }
+
+ 
+ .fixed-top .h-style {
+   transition: color 2s ease 0s;
+   font-family: 'Concert One', cursive;
+   color: white;
+   margin-left: 10px;
+ }
+
+ .fixed-top.opaque {
+   background-color:rgb(255, 255, 255);
+  }
+
+ .fixed-top.opaque .h-style {
+    color:rgb(0, 12, 117);
+   }
+ 
+ .fixed-top ul.navbar-nav li>a {
+   transition: color 2s ease 0s;
+   color:rgb(233, 233, 233);
+   font-family: 'Concert One', cursive;
+ }
+
+ .fixed-top.opaque ul.navbar-nav li>a {
+    color:rgb(0, 135, 212);
+   }
+ .fixed-top.opaque ul.navbar-nav li>a:hover {
+    color:#00218f;
+   }
+
+.navbar-nav{
+   padding-left: 30%;
+}
+
+.btn{
+ margin-left: 30%;
+}
+.space{
+   height: 20%;
+}
+.title-2{
+   color: white; 
+   font-family: 'Jura', sans-serif;
+   font-size: 70px;
+}
+
+html {
+   scroll-behavior: smooth;
+  }
+
+.btn-savoir{
+   background-color: rgba(129, 129, 129, 0.048);
+   color: rgb(73, 80, 119);
+   border: none;
+   border-radius: 10px;
+}
+
+.enregistrement{
+   padding: 4%;
+   margin-top: 1em;
+   border:rgba(255, 255, 255, 0.194) solid 1px;
+   text-align: center;
+}
+
+.btn-record{
+   box-shadow:inset 0px 0px 20px 3px #143978;
+	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	background-color:#2e466e;
+	border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Jura', sans-serif;
+	font-size:15px;
+	padding:9px 80px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.btn-submit{
+   box-shadow:inset 0px 0px 20px 3px #3966b0;
+	background:linear-gradient(to bottom, #2a66c7 5%, #2253b5 100%);
+	background-color:#2a66c7;
+	border-radius:17px;
+	border:1px solid #2862b8;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:5px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+   font-family: 'Jura', sans-serif;
+}

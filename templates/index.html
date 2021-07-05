@@ -5,38 +5,113 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enregistrement</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/main.css" media="all" />
+    <title>TousseAntiCovid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div id="app">
-        <p>Bonjour utilisateur [[ user ]] </p>
-        <div id="enregistrement">
-            <form action="/refresh" method="POST" enctype="multipart/form-data">
-                <input type="file" name="file" accept="audio/*">
-                <br>
-                <input type="submit" value="submit">
-            </form>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <a class="navbar-brand" style="display: flex;" href="#">
+            <img src="../static/img/LogoBlanc.png" width="25" height="25">
+            <h5 class="h-style">TOUSSE ANTI COVID</h5>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+            More
+        </button>
+        <div id="navbarContent" class="collapse  navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">QUI SOMMES NOUS ?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">CONTACT</a>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-primary"> Espace Administrateur</button>
         </div>
-        <form action="/test" method="post">
-            <input type="submit" name="upvote" value="Upvote" />
-        </form>
-        <div id="record">
-            <button v-on:click="startRecord" id="start"> Start</button>
-            <button v-on:click="stopRecord" id="stopp"> Stop </button>
-            <div id="ok"></div>
+
+    </nav>
+
+    <div class="banniere">
+        <div class="space"></div>
+        <div id="app" class="container">
+            <div class="row">
+                <div class=" col-8 ">
+                    <h1 class="title-2"> Allez y, toussez. </h1>
+                    <button class="btn-savoir"> @TousseAntiCovid</button>
+                    <div style="height:60%;"></div>
+                    <div style="text-align:center;">
+                        
+                        <a href="#section1"><img src="../static/img/fleche.png" width="60" height="60"></a>
+                    </div>
+                    
+                </div>
+                <div class=" col-4">
+                    <div class="row" style="display: grid;">
+                        <img src="../static/img/Micro.png" width="350" height="350">
+                        
+                        <form action="/test" method="post">
+                            <input class="btn-record" type="submit" name="upvote" value="Démarrer l'enregistrement" />   
+                        </form>
+                    </div>
+                    <div class="row">
+                        
+                        <div id="enregistrement" class="enregistrement">
+                            <p style="font-family: 'Jura', sans-serif; color:rgba(80, 80, 80, 0.79);">Choisir un enregistrement</p>
+                            <form action="/refresh" method="POST" enctype="multipart/form-data">
+                                <input type="file" name="file" accept="audio/*">
+                                <br>
+                                <input class="btn-submit" type="submit" value="Analyser">
+                            </form>
+                        </div>
+                    </div>
+                    <progress max="4"></progress>
+
+                </div>
+                
+            </div>
+            <!--<p>Bonjour utilisateur [[ user ]] </p>-->
+            <h1 id="section1" style="margin-top: 20%;"> Notre Projet </h1>
+            <div class="row" >
+                <div class="col">
+                    <p>
+                        text sur le projet --  text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet --  text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet --  text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet --  text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                        text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet -- text sur le projet --
+                    </p>
+                </div>
+                <div class="col">
+                    <img src="../static/img/Esquisse.png" width="400" height="400">
+                </div>
+                
+            </div>
+
+
+
         </div>
     </div>
 
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
-
-        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"crossorigin="anonymous"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script>
         var app = new Vue({
             el: "#app",
@@ -45,57 +120,26 @@
                 user: "Anonyme",
                 audio_save: ""
             },
-            methods: {
-                startRecord: async function (event) {
-                    navigator.mediaDevices.getUserMedia({ audio: true })
-                        .then(stream => {
-                            mediaRecorder = new MediaRecorder(stream)
-                            mediaRecorder.start()
-                            chuck = []
-
-                            mediaRecorder.addEventListener("dataavailable", e => {
-                                chuck.push(e.data)
-                            })
-                            mediaRecorder.addEventListener("stop", e => {
-                                blob = new Blob(chuck)
-                                audio_url = URL.createObjectURL(blob)
-                                audio = new Audio(audio_url)
-                                audio.setAttribute("controls", 1)
-                                ok.appendChild(audio)
-
-                                
-                                envoi = new FormData();
-                                envoi.append('audio',blob)
-                                this.audio_save = envoi
-
-                                console.log(envoi)
-                                console.log(this.audio_save)
-
-                                this.ajouterSons()
-
-                                /*var a = document.createElement("a");
-                                document.body.appendChild(a);
-                                a.style = "display: none";
-                                a.href = audio_url;
-                                a.download = "sample.wav";
-                                a.click();
-                                window.URL.revokeObjectURL(audio_url);*/
-                            })
-                        })
-                },
-                stopRecord: async function (event) {
-                    mediaRecorder.stop()
-                },
-                async ajouterSons(){
-                    
-                    console.log(this.audio_save)
-                    const res = await axios.post('/refresh2', this.audio_save , {
-                        headers: {'content-type': 'multipart/form-data'}
-                    })
-                }
-
-            }
         })
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 10) {
+                $('.fixed-top').addClass('opaque');
+            } else {
+                $('.fixed-top').removeClass('opaque');
+            }
+        });
     </script>
 </body>
 
