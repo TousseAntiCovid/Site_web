@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block body %}
+<div class="banniere-2">
+    <div class="space"></div>
+    <div class="container">
+        <h1 class="title-2"> Nous contacter </h1>
+        <form class="form-contact">
+            <div class="form-group">
+              <label for="InputEmail">Votre email</label>
+              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Entrer votre email afin de vous recontacter">
+            </div>
+            <div class="form-group">
+              <label for="InputRemarque">Description</label>
+              <textarea type="remarque" class="form-control" id="InputRemarque" placeholder="Description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-left: 0;">Envoyer</button>
+          </form>
+    </div>
+</div>
+    
+{% endblock %}

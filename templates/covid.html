@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block body %}
+<div class="banniere-3">
+    <div class="space"></div>
+    <div class="container">
+        <div class="row">
+            <h2 class="title-2"> Vous avez le COVID </h2>
+            <img src="../static/img/coronavirus.svg" height="100" width="100"
+                style="margin-left:20px;filter :  drop-shadow(0 0 0.75rem rgb(109, 4, 4));;">
+        </div>
+        <div class="row">
+            <p class="message-alert"> Détection POSITIVE du Covid-19 sur cette échantillon de toux </p>
+        </div>
+        <div class="row">
+            <img src="../static/img/attention.png" height="30" width="30">
+            <p> Une PCR confirmant la détection du covid par prélèvement nasal est nécessaire afin de valider ce
+                diagnostic </p>
+        </div>
+        <div style="height:17em;"></div>
+
+        <div style="text-align:center;">
+            <p class="message-alert message-alert-important">Que faire ?</p>
+            <a href="#section"><img src="../static/img/fleche.png" width="60" height="60"></a>
+
+        </div>
+        <div style="height:18em;"></div>
+    </div>
+</div>
+<div class="container">
+        <div class="row" id="section">
+            <div>
+                <h2 class="title-2" style="color: rgb(107, 7, 7);"> Consignes à suivre </h2>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10em;">
+            <div class="col">
+                <img src="../static/img/famille.png" height="300" width="300">
+            </div>
+            <div class="col">
+                <h4 class="title-consigne"> S'isoler immédiatement </h4>
+                <p>
+                    Prévenir ses contacts et son entourage pour qu’ils s’isolent et redouble de viligance également.
+                </p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10em;">
+            <div class="col">
+                <img src="../static/img/compte-gouttes.png" height="300" width="300">
+            </div>
+            <div class="col">
+                <h4 class="title-consigne"> Effectuer un test PCR </h4>
+                <p>
+                    Il est nécesaire d'effectuer un test PCR en laboratoire par prélevement nasopharyngé, afin de
+                    confirmer ce résultat et d'agir en conséquence, nous vous invitons à suivre les consignes sur le
+                    site d'Ameli.fr
+                </p>
+                <button class="btn-primary"
+                    onclick="window.location.href = 'https://www.ameli.fr/assure/covid-19/tester-alerter-proteger-comprendre-la-strategie-pour-stopper-lepidemie/les-tests-de-depistage-de-la-covid-19/en-cas-de-test-positif-la-covid-19';">
+                    Cliquez ici</button>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10em;">
+            <div class="col">
+                <img src="../static/img/recherche.png" height="300" width="300">
+            </div>
+            <div class="col">
+                <h4 class="title-consigne"> Contacter son médecin traitant </h4>
+                <p>
+                    Si les symptômes persistent et s'aggravent, contactez votre médecin traitant, en cas de doute sur un
+                    traitement ou pour tout autre problème de santé.
+                </p>
+                <p style="color: red;">
+                    Si vous avez des difficultés respiratoires, il faut appeler le 15.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>Icônes conçues par <a href="https://www.flaticon.com/fr/auteurs/vectors-market" title="Vectors Market">Vectors
+        Market</a> from <a href="https://www.flaticon.com/fr/" title="Flaticon">www.flaticon.com</a></div>
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
+        href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+{% endblock %}

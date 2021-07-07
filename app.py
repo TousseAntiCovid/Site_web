@@ -63,41 +63,67 @@ def refresh():
     model = getModel("model_336")
     rep = classifier(model,"uploaded/fourrier_uploaded/en_cours/"+filename_png)
     if int(float(rep)) < 0.1:
-        return "covid"
+        return render_template("covid.html")
     if int(float(rep)) > 0.9:
-        return "Non-covid"
+        return render_template("healthy.html")
     else:
-        return "Non défini"
+        return render_template("nondefini.html")
 
 
 
 @app.route('/test', methods=['POST'])
 def test():
     fs = 44100 
-    seconds = 7  
+    seconds = 4  
     myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
     sd.wait() 
     comp = find_number()
-    file = "uploaded/wav_uploaded/en_cours/recorded_"+ str(comp)+ ".wav"
+
+    filename = "recorded_" + str(comp) 
+
+    file = "uploaded/wav_uploaded/en_cours/"+ filename + ".wav"
     write(file, fs, myrecording)
-    fourier("recorded_"+str(comp)+".png")
+
+    fourier(filename+ ".png")
     model = getModel("model_336")
-    rep = classifier(model,"uploaded/fourrier_uploaded/en_cours/"+"recorded_"+str(comp)+".png")
-    if int(float(rep)) < 0.1:
-        return "covid"
-    if int(float(rep)) > 0.9:
-        return "Non-covid"
+
+    reponse = classifier(model,"uploaded/fourrier_uploaded/en_cours/"+filename + ".png")
+    print(float(reponse))
+    if int(float(reponse)) < 0.1:
+        return render_template("covid.html")
+    if int(float(reponse)) > 0.9:
+        return render_template("healthy.html")
     else:
-        return "Non défini"
+        return render_template("nondefini.html")
 
     
     
-@app.route('/refresh2', methods = ['POST'])
-def refresh2():
-    print(request.files)
+#@app.route('/refresh2', methods = ['POST'])
+#def refresh2():
+#    print(request.files)
+#    return "a remplir"
     
-    return "a remplir"
-    
+
+@app.route('/about', methods=['GET'])
+def aboutus():
+    return render_template('about.html')
+
+@app.route('/covid', methods=['GET'])
+def covid():
+    return render_template('covid.html')
+
+@app.route('/healthy', methods=['GET'])
+def healthy():
+    return render_template('healthy.html')
+
+
+@app.route('/nondefini', methods=['GET'])
+def nondefini():
+    return render_template('nondefini.html')
+
+@app.route('/contact', methods=['GET','POST'])
+def contact():
+    return render_template('contact.html')
 
 
 if __name__ == "__main__":
