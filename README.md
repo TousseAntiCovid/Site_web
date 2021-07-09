@@ -11,9 +11,9 @@ Afin de compiler notre site web, il est nécessaire de créer un environnement v
   - Executer la commande pip3 install virtualenv
   - Executer la commande virtualenv env
   - Executer source env/bin/activate sur macOS/Linux ou env/Scripts/activate sur Windows
-6.Installer tous les modules nécessaires via la commande pip install -r requirements.txt
-7.  Run app.py avec python app.py
-8  Ouvrez votre navigateur (de préférence Google Chrome) et allez sur le lien http://127.0.0.1:5000/.
-9  Fermer votre environnement virtuel avec la commande deactivate
+6. Installer tous les modules nécessaires via la commande pip install -r requirements.txt /n
+7. Run app.py avec python app.py /n
+8. Ouvrez votre navigateur (de préférence Google Chrome) et allez sur le lien http://127.0.0.1:5000/. /n
+9. Fermer votre environnement virtuel avec la commande deactivate /n
 
 
